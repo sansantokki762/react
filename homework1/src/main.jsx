@@ -60,12 +60,14 @@ function Intro/*함수 이름에는 무조건 대문자로 시작*/() {
     
   const age = 99
   let result; //사용하는 변수는 선언을 해야 한다.//
-  if (age >= 30) {
-    result = "섭섭하겠노" //if문은 result안에 사용할 수 없어서 밖에다 써서 이렇게 함//
+  if (age
+     >= 30) {
+    result
+     = "섭섭하겠노" //if문은 result안에 사용할 수 없어서 밖에다 써서 이렇게 함//
   } else {
     result = "안 섭섭하겠노"
   }
-
+  
   return(
    <div>
      <p className={a} onClick={myFunc}>저는 산산토끼입니다.</p>
@@ -81,7 +83,37 @@ function Intro/*함수 이름에는 무조건 대문자로 시작*/() {
   ) 
 }
 
+///////////////////////////////////////////////////////////////////////
+
+//숙 3//
+
+import Flower from './Flower.jsx' //불러옴
+
+function Garden() {
+  return (
+    <>
+      <p>여기는 정원이다.</p>
+      <Flower/> {/*여기 안에 다른 컴포넌트를 넣을 수 있음*/}
+      <Flower color = "검은" amount={20}/> {/*props도 여기에 넣을 수 있음*/}
+      <Flower1 color = {a} types = {b} /> {/*배열이나 객체에 접근시 이렇게 함*/}
+    </>
+  )
+}
+
+function Flower1(props) {
+  return(
+    <>
+      <p>
+        우리에게는 {props.color[0]} {props.color[1]} {props.color[2]} 장미가 
+        있어용. 그리고 검은 {props.types.kind}가 {props.types.amount}송이가 있지요.
+      </p>    
+    </> 
+   )
+}
+
+const a = ["빨간","노란", "검은"] //배열
+const b = {kind: "장미", amount: 762} //객체
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <Intro/>
+    <Garden/>
 )
