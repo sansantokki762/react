@@ -114,6 +114,54 @@ function Flower1(props) {
 const a = ["빨간","노란", "검은"] //배열
 const b = {kind: "장미", amount: 762} //객체
 
+
+
+////////////////////////////////////////////////////////////////////////
+
+//숙4 //
+
+function Rose({rose}) /*rose만 사용 가능하도록 제한*/ {
+
+  return(
+    <>
+      <p>예쁜 {rose}가 있어용</p>
+    </>
+  )
+}
+
+function Violet(props) {
+
+  const {violet , color} = props //객체를 생성해서 제한 
+
+  return(
+    <>
+      <p> 이쁜 {violet}이 있는데 {color}색이네 ㅎㅎ</p>
+    </>
+  )
+}
+
+function WhiteFlowers({kind1 ="남산제비" /*기본값으로 지정*/ ,kind2 , ...rest}) /*객체를 props자리에 넣어버림*/{
+  return(
+    <>
+      <p>흰 꽃은 {kind1}, {kind2}, {rest.kind3}가 있지요</p>
+    </>
+  )
+}
+
+import Box from './Box.jsx'
+
+function Flowers() {
+  return(
+    <Box> {/*이렇게 안에다 뭘 넣을 수 있음*/} 
+      <Rose rose ="장미"/>
+      <Violet violet = "바이올렛" color = "보라" />
+      <WhiteFlowers  kind2 ="큰개별" kind3 ="매화" />
+    </Box>
+  )
+}
+
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <Garden/>
+    <Flowers/>
 )
