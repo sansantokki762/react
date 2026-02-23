@@ -160,8 +160,98 @@ function Flowers() {
   )
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+
+//숙 5 //
+function sayHelo(name) {
+  alert(`${name}님, "안녕하세요"`);
+}
+                                      //둘은 같음//
+function App() {
+  const sayHi = (name, e) => {
+    alert(`${name}님, "안녕하세요`)  // `로 감싸고 ${}을 해서 매개변수로 넣은 거 갇자 쓸 수 있는 거 같음.
+    alert(`발생한 이벤트는 ${e.type}`)
+  }
+
+  return(
+    <button onDoubleClick={(a /*얘는 이름 아무거나 하도 됨*/) => sayHi("산토끼",a)}>인사 버튼</button>
+  )
+}
+
+function Apps() {
+  return(
+    <>
+      <App/>
+    </>
+  )
+}
+
+//조건문//
+
+function AdminPanel() {
+  return(
+    <p>관리자 페이지</p>
+  )
+}
+
+function UserPanel() {
+  return(
+    <p>유저 페이지</p>
+  )
+}
+
+ //안에서 다 정리
+function Dist() {
+  const isAdmin = false      //이거 일반 js라서 {}필요가 없어
+                            // 틀리면 아랫쪽(else) 맞으면 윗쪽(if)
+  if (isAdmin) {      
+    return <AdminPanel/>
+  } else {
+    return <UserPanel/>
+  }
+}
+
+// if문
+function Dist1({isAdmin}) {
+                            // 틀리면 아랫쪽(else) 맞으면 윗쪽(if)
+  if (isAdmin) {      
+    return <AdminPanel/>
+  } else {
+    return <UserPanel/>
+  }
+}
+
+//삼항
+function Dist2({isAdmin}) {
+  return(
+    <>
+      { isAdmin ? <AdminPanel/> : <UserPanel/>}
+    </>
+  )    
+  
+}
+
+//재밋는 거
+function Dist3(props) {
+  return(
+    <>
+      {props.kind && /*props.kind안에 값이 있을때만 작동*/ <p>나는 {props.kind}토끼입니다</p> }
+    </>
+  )
+}
+
+function DistAll() {
+  return(
+    <>
+      <Dist/>
+      <Dist1 isAdmin = {false}/>    {/*이거 jsx이라서 {}필요*/}
+      <Dist2 isAdmin = {false}/>
+      <Dist3 kind = "산산"/>
+    </>
+  )
+}
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <Flowers/>
+    <DistAll/>
 )
