@@ -149,6 +149,7 @@ function WhiteFlowers({kind1 ="남산제비" /*기본값으로 지정*/ ,kind2 ,
 }
 
 import Box from './Box.jsx'
+import { useState } from 'react'
 
 function Flowers() {
   return(
@@ -249,9 +250,67 @@ function DistAll() {
       <Dist3 kind = "산산"/>
     </>
   )
+}         
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+//숙6//
+
+function Fllower() {
+
+  const flowers = ["장미" , '백장미' , "바이올렛"]
+//배열, 번지를 키값으로//
+
+  const flowers1 = [
+    {id:1, kind: "장미"},
+    {id:22, kind: "백장미"},
+    {id:333, kind: "바이올렛"},
+//객체+ 키값 추가//
+
+  ]
+  return(
+    <>
+      <ul>
+        {flowers.map( (flowers , index)=> <li key = {index}>
+          {index}.나는 {flowers}입니다
+        </li> )}
+      </ul>
+      <ul>
+        {flowers1.map( (flowers1)=> <li key={flowers1.id}>나는 {flowers1.kind}입니다 </li> )}
+      </ul>   
+    </>
+  )
+}
+
+//form1
+
+
+
+function App1() {
+
+  const [name, setName] = useState("")
+
+  function handleChange(e) {
+    setName(e.target.value);
+  }
+
+  return(
+    <form>
+      <label>이름 입력해요:</label>
+      <input type="text"
+      value = {name} 
+      onChange = {handleChange}  //입력할 때마다 핸들체인지 함수 실행.
+      />
+      <p>입력한 값:{name}</p>
+    </form>
+  )
 }
 
 
+
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <DistAll/>
+    <App1/>
 )
