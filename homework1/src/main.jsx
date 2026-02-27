@@ -307,10 +307,64 @@ function App1() {
   )
 }
 
+///////////////////////////////////////////////////////////////////
 
+//숙7//
+
+//submit
+
+function App2() {
+
+  const [name , setName] = useState("")
+
+  function handleChange(e) {
+    setName(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    alert(name)
+  }
+
+  return(
+    <form onSubmit={handleSubmit}> {/*submit 눌렀을 때 함수 호출*/}
+      <label>이름 입력:</label>
+      <input 
+      type="text"
+      value={name}
+      onChange={handleChange} 
+      />
+      <input 
+      type="submit" 
+      />
+    </form>
+  )
+}
+
+//text area//
+
+function App3() {
+
+const [mytext , setMytext] = useState("")
+
+function handleChange(e) {
+  setMytext(e.target.value)
+}
+
+ return(
+  <form>
+    <label>갑을 입력:</label>
+    <textarea                  //여기서 특이하게 textarea 하나만 씀//
+      value={mytext}
+      onChange={handleChange} 
+    />
+    <p>입력한 거:{mytext}</p>
+  </form>
+ )
+}
 
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <App1/>
+    <App3/>
 )
