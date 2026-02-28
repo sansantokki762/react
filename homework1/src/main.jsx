@@ -363,8 +363,72 @@ function handleChange(e) {
  )
 }
 
+///////////////////////////////////////////////////////////////
+
+//숙8//
+
+function App4() {
+  const [flower, setFlower] = useState("rose") //초기값 지정
+
+  function handleChange(e) {
+    setFlower(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    let result = `flower you chose is ${flower}`
+    alert(result)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>pick a flower you like</label>
+      <br />
+      <label>
+        <input type="radio" 
+              name='flower'    //flower이라는 그룹에 속함, 체크를 하면 다른 게 체크 해제시켜줌//
+              value="rose"
+              checked={flower == "rose"} onChange={handleChange}/>rose         {/*체크 함으로 vlue값이 이동*/}
+      </label>
+      <label>
+        <input type="radio" 
+              name='flower'
+              value="white rose"
+              checked={flower == "white rose"} onChange={handleChange}/>white rose
+      </label>
+      <label>
+        <input type="radio" 
+              name='flower'
+              value="violet"
+              checked={flower == "violet"} onChange={handleChange}/> violet
+      </label>
+      <button>submit</button>
+    </form>
+  )
+}
+
+import Modal from './Modal.jsx'
+
+function App5() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div>
+      <h1>React Portal Example</h1>
+      <button onClick={ () => setOpen(true)}>Open Modal</button> {/*클릭하면 true로 바뀜*/}
+
+      { open && /*open이 참이라면*/(
+         <Modal>
+          <h2>안녕하세용!</h2>
+          <button onClick={ () => setOpen(false) }>Close Modal</button>
+         </Modal> 
+      )
+    }
+    </div>
+  )
+}
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <App3/>
+    <App5/>
 )
