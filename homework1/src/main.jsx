@@ -429,6 +429,47 @@ function App5() {
 }
 
 
+////////////////////////////////////////////////////////////
+//숙9//
+
+import Greeting from './assets/Greeting.jsx'
+import { Suspense } from 'react'
+
+function App6 () {
+  return(
+    <div>
+      <Suspense fallback={ <div>잠시만요...</div> }> {/*딜레이가 될때 이게 뜸*/}
+        <Greeting/>
+      </Suspense>
+    </div>
+  )
+}
+
+
+
+
+//css//
+
+//import "./style1.css"; // 스타일 자체를 불러 옴//
+import styles from "./style1.module.css"
+
+function Style() {
+
+  const style1 = {
+    color: "#fff",
+    backgroundColor: "#f00",   //밖에서 객체를 만들어서 불러도 됨//
+    padding: "10px"
+  }
+
+  return(
+    <>
+      <h1 style={{color:'pink', backgroundColor: 'gray'}}>나는 문어</h1>  { /*객체 집어넣기*/}
+      <h1 className={styles.title} >sytle</h1> 
+    </>
+  )
+}
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <App5/>
+    <Style/>
 )
