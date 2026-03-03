@@ -451,7 +451,7 @@ function App6 () {
 //css//
 
 //import "./style1.css"; // 스타일 자체를 불러 옴//
-import styles from "./style1.module.css"
+import style from "./style1.module.css"
 
 function Style() {
 
@@ -464,12 +464,35 @@ function Style() {
   return(
     <>
       <h1 style={{color:'pink', backgroundColor: 'gray'}}>나는 문어</h1>  { /*객체 집어넣기*/}
-      <h1 className={styles.title} >sytle</h1> 
+      <h1 className={style.title} >sytle</h1> 
+    </>
+  )
+}
+
+///////////////////////////////////////////////////////////////////
+
+//숙10//
+
+import styles from "./button.module.css"
+
+function Btn() {
+  return(
+    <>
+    <button className={styles.btn}>
+      sub button
+    </button>
+    <button className={`${styles.btn} ${styles.primary}`}> {/*이러면 살짝 복잡함*/}
+      subsub buttton
+    </button>
+    <button className={styles.secondary}> {/*하나의 이름으로 두 개 호출*/}
+      subjun button
+    </button>
+    <h1 className='myheader'>타이틀</h1> {/*글로벌은 이렇게 불러옴*/}
     </>
   )
 }
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <Style/>
+    <Btn/>
 )

@@ -1,0 +1,23 @@
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: aqua;
+    color: blueviolet;
+}
+.secondary {
+    composes:btn;                  /*btn이랑 합침*/
+    background-color: bisque;
+    color:chartreuse;
+}
+
+:global(.myheader) {    /*글로벌 문법*/
+    padding: 10px 20px;
+    font-size: 50px;
+    color: white;
+    background-color: dodgerblue;
+}
