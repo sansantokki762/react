@@ -1,3 +1,6 @@
+
+
+
 import { createRoot } from 'react-dom/client'
 
 //숙 1//
@@ -473,7 +476,7 @@ function Style() {
 
 //숙10//
 
-import styles from "./button.module.css"
+import styles from "./button.module.css";
 
 function Btn() {
   return(
@@ -493,6 +496,19 @@ function Btn() {
 }
 
 
+/////////////////////////////////////////////////////////
+//숙11//
+
+import Heads from "./LadyBug.jsx"
+
+function App7() {
+ return( 
+ <Heads/>
+  )
+}
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
-    <Btn/>
-)
+ <App7/>
+);
+
+
