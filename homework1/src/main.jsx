@@ -507,8 +507,23 @@ function App7() {
   )
 }
 
+/////////////////////////////////////////////////////////
+//숙12//
+import {Head1} from './LadyBug.jsx'
+import {Head2} from './LadyBug.jsx'
+import {Head3} from './LadyBug.jsx'
+
+
+
+function App8() {
+ return( 
+ <Head3/>
+  )
+}
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <App7/>
+ <App8/>
 );
 
 

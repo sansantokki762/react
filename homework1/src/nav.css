@@ -1,0 +1,28 @@
+
+nav > a {       /*기본 상태*/
+    color: #333;
+    text-decoration: underline;
+    font-weight: normal;
+    padding: 5px 10px;
+}
+
+nav > a.active {
+    color: #007bff;
+    text-decoration: normal;
+    font-weight: bold;
+}       /*얘는 덮어쓰기니까 padding 안 써도 됨. 고치고싶은 부분만 고침.. 개꿀*/
+
+.inactive {
+    color: #333;
+    text-decoration: underline;
+    font-weight: normal;
+    padding: 5px 10px;
+}
+
+.active {
+    color: #007bff;
+    text-decoration: normal;
+    font-weight: bold; 
+    padding: 5px 10px;
+    /*얘는 덮어쓰지 않고 바뀌니까 패딩써줌 ㅎ*/
+}
