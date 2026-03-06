@@ -2,7 +2,6 @@
 
 
 import { createRoot } from 'react-dom/client'
-
 //숙 1//
 
 function getMoney(won) {
@@ -152,7 +151,7 @@ function WhiteFlowers({kind1 ="남산제비" /*기본값으로 지정*/ ,kind2 ,
 }
 
 import Box from './Box.jsx'
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 
 function Flowers() {
   return(
@@ -526,4 +525,33 @@ createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
  <App8/>
 );
 
+///////////////////////////////////////////////////
+//숙13//
 
+
+function SearchBar() {
+  const [text, setText] = useState("");
+  const [result, setResult] = useState("");
+  const [ispending, startTransition] = useTransition()
+
+  const handleChange = (e) => {
+    // 빠른 작업//
+    setText(e.target.value)
+
+    //느린 작업//
+    startTransition( () => {
+      setResult(e.target.value)   //빠른 작업과 로딩중이 먼저 렌더된 다음에 느린 작업 랜더//
+    })                                
+  }
+                                
+  return (
+    <div>
+      <input value={text} onChange={handleChange}/>
+      {ispending ? (<p>loading...</p>) : (<p>search result :{result} </p>) } {/* 삼항 연산자는 태그를 쓸때는 ()쓰기*/}
+    </div>
+  )
+}
+
+createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
+ <SearchBar/>
+);
