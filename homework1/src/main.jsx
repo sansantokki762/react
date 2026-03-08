@@ -552,6 +552,53 @@ function SearchBar() {
   )
 }
 
+
+
+////////////////////////////////////////////////////////////
+//숙12//
+function Counter() {
+ const [count, setCount] = useState(0);
+
+ return (
+  <div>
+    <h1>현재 카운트 : {count}</h1>
+    <button onClick={() => setCount(count + 1)}>+ 증가</button>
+    <button onClick={() => setCount(count - 1)}>- 감소</button>
+  </div>
+ )
+  }
+
+function Mycar() {
+  const [car, setCar] = useState(
+    {
+      brand: "현대",
+      model: "아반떼",
+      year: 2010,
+      color: "black"
+    }
+  )
+          //setcar함수를 통해서만 객체를 바꿀 수 있음//
+  const updateColor = () => {
+    setCar(previousState => {             //previousstate가 있어야 다른 정보들이 저장됨.//
+      return {...previousState, color:"blue"}
+    })
+  }
+
+  return (
+    <>
+      <h1>my {car.brand}</h1>
+      <p>
+        이 차는 {car.color} {car.model} {car.year} 년식입니다.
+      </p>
+      <button type='button' onClick={updateColor}>
+        파란색으로 변경
+      </button>
+    </>
+  )
+}
+
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <SearchBar/>
+ <Mycar/>
 );
