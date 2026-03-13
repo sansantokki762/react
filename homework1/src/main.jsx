@@ -151,7 +151,7 @@ function WhiteFlowers({kind1 ="남산제비" /*기본값으로 지정*/ ,kind2 ,
 }
 
 import Box from './Box.jsx'
-import { useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 
 function Flowers() {
   return(
@@ -598,7 +598,47 @@ function Mycar() {
 }
 
 
+////////////////////////////////////////////////////////////////////////
+
+//숙13//
+
+
+function App9() {
+
+  const [count, setCount] = useState(0)
+  const [name, setName] = useState("")
+
+
+  const updateCounter = () => {
+    setCount(count + 1);
+  } 
+
+  useEffect(
+    () => {
+      console.log(`${count} useEffect Hook이 실행되었습니다.`)  //처음에 한 번 새로 고침하고, 새로고침 안하고 작동//
+    }
+  ,[count]); //감지 대상//
+
+  useEffect( () => {
+    console.log(`${name} useeffect name이 실행됨`)
+  }) 
+
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
+
+  return (
+    <>
+      <p>{count}</p>
+      <button type='button' onClick={updateCounter}>카운터 증가</button>
+      <input type="text" onChange={handleNameChange} />
+      <p>{name}</p>
+    </>
+  )
+}
+
+
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <Mycar/>
+ <App9/>
 );
