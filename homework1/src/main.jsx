@@ -637,8 +637,26 @@ function App9() {
   )
 }
 
+////////////////////////////////////////////////////////
+
+//숙14//
+
+import Count from "./Counter.jsx";
+
+
+function App10() {
+
+const [showCounter, setShowCounter] = useState(false)
+
+    return (
+      <div>
+        { showCounter && <Count/> } {/*조건부 랜더링*/}
+        <button type='button' onClick={(() => setShowCounter(! showCounter))}>counter 보이기/숨기기</button> {/*true false 값 누를 때마다 바꿔줌*/}
+      </div>
+    )
+}
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <App9/>
+ <App10/>
 );
