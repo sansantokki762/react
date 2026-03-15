@@ -657,6 +657,77 @@ const [showCounter, setShowCounter] = useState(false)
 }
 
 
+
+
+//////////////////////////////////////////////////////
+
+//숙15//
+
+// 복잡한 벙법//
+
+
+function Component1() {
+  const [user, setUser] = useState("Linux")
+
+  return (
+    <>
+      <h1>{`안녕 나는 ${user}야!`}</h1>
+      <Component2 user = {user}/>
+    </>
+  )
+}
+
+
+
+function Component2({user}) {
+  
+  return (
+    <>
+      <h1>component3</h1>
+      <Component3 user = {user}/>
+    </>
+  )
+}
+
+function Component3({user}) {
+  
+  return (
+    <>
+      <h1>component3</h1>
+      <h2>{`안녕 나는 ${user} 임.`}</h2>
+    </>
+  )
+}
+
+
+//편한 방법//
+
+import { useContext, createContext } from 'react'
+
+const UserContext = createContext()
+
+function Component11() {
+  const [user, setUser] = useState("눅눅이")
+
+  return (
+    <UserContext.Provider value={user}>
+      <h1>{`나는 ${user}`}</h1>
+      <Component22/>
+    </UserContext.Provider> // 마지막엔 /usercontext라고 써애 함.//
+  )
+}
+
+
+
+function Component22() {
+  const user = useContext(UserContext)
+  return (
+    <>
+      <h1>{`나는 다시 ${user}`}</h1>
+    </>
+  )
+}
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <App10/>
+ <Component11/>
 );
