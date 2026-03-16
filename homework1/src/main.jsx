@@ -728,6 +728,35 @@ function Component22() {
   )
 }
 
+
+//////////////////////////////////////////////////////
+
+//숙16//
+
+import { useRef } from 'react'
+
+function App11() {
+  const count = useRef(0) // { current: 0 }이라는 뜻//
+  const [inputValue, setInputValue] = useState("")
+
+
+  useEffect(() =>{
+    console.log(count)
+    count.current = count.current + 1
+  })
+
+  return (
+    <>
+      <p>값 좀 입력해봐</p>
+      <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+      <p>랜더링 횟수:{count.current}</p>
+    </>
+  )
+}
+
+
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <Component11/>
+ <App11/>
 );
