@@ -151,7 +151,7 @@ function WhiteFlowers({kind1 ="남산제비" /*기본값으로 지정*/ ,kind2 ,
 }
 
 import Box from './Box.jsx'
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useLayoutEffect, useState, useTransition } from 'react'
 
 function Flowers() {
   return(
@@ -755,8 +755,33 @@ function App11() {
 }
 
 
+/////////////////////////////////////////////////////////
+
+//숙17//
+
+
+function App12() {
+  const [inputValue, setInputValue] = useState("")
+  const a = useRef()
+
+  useEffect(() => {
+    a.current = inputValue;  //랜더링 후 실행됨. a.current는 값을 저장해줌.//
+  },[inputValue])
+
+  return (
+    <>
+      <input type="text" 
+      value={inputValue}
+      ref={a}
+      onChange={ (e) => setInputValue(e.target.value) }
+    />
+      <h2>현재 값:{inputValue}</h2>  
+      <h2>직전 값:{a.current}</h2>  
+    </>
+  )
+}
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <App11/>
+ <App12/>
 );
