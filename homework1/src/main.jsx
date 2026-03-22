@@ -781,7 +781,43 @@ function App12() {
   )
 }
 
+/////////////////////////////////////////////////////
+
+//숙18//
+
+import { useReducer } from 'react'
+
+function warehouseReducer(state, action) {
+  switch(action.type) {  //action이 선언한 type을 말함.//
+    case "IN":
+      return {...state, stock: state.stock + 1}  //...스프레드 문법: 다른 데이터도 그래로 유지//
+    case "OUT":
+      return {...state, stock: Math.max(0, state.stock -1)}  //최소 0으로 맞춰줌//
+      default:
+        return state;
+  }
+}
+
+
+function Warehouse() {
+  const [state, dispatch] = useReducer(warehouseReducer, {stock: 0})
+
+  return (
+    <div>
+      <h1>창고 재고:{state.stock}</h1>
+      <button onClick={ () =>dispatch( {type: "IN"} ) }>입고</button>
+                                {/*dispatch에 담아서 reducer한테 보냄*/}
+      <h1>창고 재고:{state.stock}</h1>
+      <button onClick={ () =>dispatch( {type: "OUT"} ) }>출고</button>
+    </div>
+  )
+
+}
+
+
+
+
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <App12/>
+ <Warehouse/>
 );
