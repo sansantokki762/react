@@ -815,9 +815,36 @@ function Warehouse() {
 }
 
 
+////////////////////////////////////////////////////////////
+//숙19//
 
+import { useCallback } from 'react'
+
+
+function Counter2() {
+
+const [count, setCount] = useState(0)
+
+const handleClick = useCallback(() => {
+  setCount(prev => prev + 1); 
+}, []) // 최신 값에다 더하기 1을 하고, 랜더링이 되도 함수는 기억 됨.//
+
+const handleClickFalse = useCallback(() => {
+  setCount(count + 1); //초기값에다 더하기 1만 함.//
+}, [])
+
+console.log("component rendered!")
+
+  return(
+    <div>
+      <h1>Count : {count} </h1>
+      <button onClick={handleClick}>+1</button>
+      <button onClick={handleClickFalse}>+1 but something wrong</button>
+    </div>
+  )
+}
 
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <Warehouse/>
+ <Counter2/>
 );
