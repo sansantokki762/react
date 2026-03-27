@@ -845,6 +845,53 @@ console.log("component rendered!")
 }
 
 
+///////////////////////////////////////////////////////////
+//숙20//
+
+
+//무거운 계산 (시간 끌기용).//
+const heavyCalculation = (num) => {
+  console.log("계산중")
+  for(let i = 0; i<3000000000; i++) {
+    num += 1; 
+  }
+
+  return num; //리턴: 결과 내보내기//
+};
+
+function App13() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([])
+  const calculation = heavyCalculation(count); //랜더링이 될 때 무거운거 호출 됨//
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = () => {
+    setTodos((t) => [...t, "새로운 할 일"]) //새로운 할 일이 추가되면 다시 랜더링함으로 위의 무거운거 실행됨.//
+  }; 
+
+  return (
+    <div>
+      <div>
+        <h2>나의 할 일 (usememo 사용X)</h2>
+        {todos.map((todo, index) => { //맵을 통해서 내용물:todo와 번지:index를 가져올 수 있음//
+          return <p key={index}>{todo}</p>
+        })}
+        <button onClick={addTodo}>할 일 추가</button>
+      </div>
+      <hr />
+      <div>
+        count: {count} <button onClick={increment}>+</button>
+      </div>
+    </div>  
+  )
+}
+
+// 결국 하나의 간단한 작업을 하는데 코드 전체를 다시 랜더링하니 느려질 수 있음.
+// 따라서 useMemo를 사용하여 최적화 식혀줌.
+
+
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <Counter2/>
+ <App13/>
 );
