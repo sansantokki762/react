@@ -151,7 +151,7 @@ function WhiteFlowers({kind1 ="남산제비" /*기본값으로 지정*/ ,kind2 ,
 }
 
 import Box from './Box.jsx'
-import { useEffect, useLayoutEffect, useState, useTransition } from 'react'
+import { use, useEffect, useLayoutEffect, useState, useTransition } from 'react'
 
 function Flowers() {
   return(
@@ -891,7 +891,27 @@ function App13() {
 // 결국 하나의 간단한 작업을 하는데 코드 전체를 다시 랜더링하니 느려질 수 있음.
 // 따라서 useMemo를 사용하여 최적화 식혀줌.
 
+/////////////////////////////////////////////////////////////////////////
+
+//숙21//
+import useFetch from './useCustomHook.js'
+
+function Home() {
+
+ const [data] = useFetch("https://jsonplaceholder.typicode.com/todos") //커스텀 훅 사용, 배열로 반환해서 가져옴.//
+
+  return (
+  <>
+    {data &&
+      data.map((item) => {  //맵을 통해서 내용물:item과 번지:index를 가져올 수 있음//
+        return <p key={item.id}>{item.title}</p>
+      })
+    }
+  </>
+    )
+}
+
 
 createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <App13/>
+ <Home/>
 );
