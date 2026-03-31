@@ -910,8 +910,31 @@ function Home() {
   </>
     )
 }
+/////////////////////////////////////////////////////////////////////
+//숙22//
 
 
-createRoot(document.getElementById('root')).render/* body를 랜더함*/ (
- <Home/>
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'; // 올바른 패키지에서 import
+
+// 1. 컴포넌트 정의
+const Home2 = () => <h1>홈페이지</h1>;
+const About2 = () => <h1>소개 페이지</h1>;
+const NotFound = () => <h1>404 페이지</h1>;
+
+// 2. 라우터 설정
+const routers = createBrowserRouter([
+    {
+        path: "/", 
+        element: <Home2 />, 
+        errorElement: <NotFound /> // 경로가 없을 때 NotFound 컴포넌트 렌더링
+    },
+    {
+        path: "/about", 
+        element: <About2 />
+    }
+]);
+
+// 3. 렌더링
+createRoot(document.getElementById('root')).render(
+    <RouterProvider router={routers} />
 );
